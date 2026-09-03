@@ -1,0 +1,53 @@
+# Build and caches (future app)
+node_modules/
+dist/
+.nuxt/
+.output/
+target/
+.gradle/
+*.apk
+*.aab
+
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.pem
+*.key
+credentials/
+secrets/
+cookies/
+tokens/
+*credential*dump*
+*token*dump*
+*cookie*dump*
+*.stronghold
+
+# Real user data, local captures and debug output
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+userData/
+userdata/
+private-data/
+captures/
+network-captures/
+real-api-responses/
+auth-logs/
+logs/
+*.log
+*.har
+*.pcap
+*.pcapng
+
+# Local work
+work/
+.tmp/
+*.local
+.DS_Store
+Thumbs.db
