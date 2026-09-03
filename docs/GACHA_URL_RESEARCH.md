@@ -2,6 +2,12 @@
 
 最后审查：2026-09-02。核心结论：**尚不能确认国服/B服 Android 当前版本能够独立取得可用寻访 URL。** 上游桌面日志解析不构成手机取链接证据。
 
+## 最新用户反馈与当前路线
+
+2026-09-03 用户反馈：断网后仅显示“网络异常”，没有完整地址。此结果记为该次操作失败（用户报告）；设备、游戏版本、Android/WebView 版本和渠道尚未确认，不能泛化为所有 Android/渠道均失败。此前“有链接”的说法已被用户更正，未取得 URL 样本。
+
+当前提升手机官方网页登录为优先验证路线。URL 导入保留为有可靠获取证据后的可选入口；手动 Token 没有独立手机获取路径时不算可用兜底。网页登录和 B服完整链仍为 UNKNOWN/PARTIAL，未宣称可用。
+
 ## 状态
 
 VERIFIED=在注明版本/平台/渠道成功复现；PARTIAL=只读到源码或部分成功；FAILED=在注明条件下明确失败；UNKNOWN=尚无证据。FAILED 不表示所有机型永久失效。历史废弃机制另在 API_RESEARCH 记 DEPRECATED。
@@ -11,7 +17,7 @@ VERIFIED=在注明版本/平台/渠道成功复现；PARTIAL=只读到源码或�
 | 问题 | 官服 Android | B服 Android | 当前证据 / 下一步 |
 | --- | --- | --- | --- |
 | 游戏内能获得完整寻访 URL | UNKNOWN | UNKNOWN | 必须设备操作验证 |
-| 断网后错误页允许完整复制 | UNKNOWN | UNKNOWN | 用户提出的候选流程，不能当教程宣传 |
+| 断网后错误页允许完整复制 | UNKNOWN | UNKNOWN | U-001 报告仅网络异常、无地址；渠道未确认，不能改写整列状态 |
 | 不断网的复制/分享方式 | UNKNOWN | UNKNOWN | 优先寻找更简单的入口 |
 | URL 含 token/u8_token 等凭据 | UNKNOWN | UNKNOWN | 桌面源码有 u8_token 解析线索，但不是移动样本 |
 | server_id/serverId/server 等字段 | UNKNOWN | UNKNOWN | 不猜固定 server=1 |
@@ -31,7 +37,7 @@ VERIFIED=在注明版本/平台/渠道成功复现；PARTIAL=只读到源码或�
 5. 按可信候选 host 解析，在隔离 PoC 中调用固定接口验证授权、角色归属、角色寻访、武器卡池与武器寻访。
 6. 验证过期、重复输入、重启、分页、离线与取消；成功条件必须覆盖全程无需 PC。
 
-未提供 Android 设备或真实测试样本，本轮以上步骤均未执行。研究不得要求用户把真实 Token 上传到聊天或代码仓库。
+开发侧未连接设备、未独立执行上述步骤；已收到 U-001 用户操作反馈，未取得真实 URL 样本。研究不得要求用户把真实 Token 上传到聊天或代码仓库。
 
 ## Parser 契约
 
@@ -62,4 +68,4 @@ ParseResult：SUCCESS、INVALID_URL、UNSUPPORTED_HOST、MISSING_CREDENTIAL、UN
 
 手机 B服取链接、授权、正确归属、角色+武器分页都 VERIFIED 后，才可把“无需电脑、复制链接即可分析”写成已实现卖点。任一必需环节 FAILED 且没有稳定手机替代路径时，记录失败条件，提升网页登录；不继续围绕未经证实的 URL 做完整产品。
 
-续轮进展：已完成 parser 本体及合成行为审查，见 [CHARACTERIZATION](reference/CHARACTERIZATION.md)。当前 adb 无设备，手机获取能力仍为 UNKNOWN，尚无足够证据把 URL 路线判为 FAILED 或提升网页登录为唯一主路线。设备验证记录表见 [ANDROID_VERIFICATION](ANDROID_VERIFICATION.md)。
+续轮进展：已完成 parser 本体及合成行为审查，见 [CHARACTERIZATION](reference/CHARACTERIZATION.md)。开发侧尚无设备实测。U-001 已报告断网取链接失败，当前优先验证网页登录；整体 URL 可行性仍未定，网页登录也不是已验证的唯一可用路线。设备验证记录表见 [ANDROID_VERIFICATION](ANDROID_VERIFICATION.md)。

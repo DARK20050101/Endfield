@@ -34,6 +34,12 @@ Endfield Trace 是 Local-first、Android-first、Bilibili 渠道服优先的《�
 | 凭据 | Windows 系统安全存储；Android Keystore / Stronghold 等候选 | 具体实现未选定；V0.1 默认不持久化 |
 | 云同步 | 可选 WebDAV | V0.5；不上传授权 |
 
+## 当前授权验证顺序
+
+2026-09-03 用户反馈：断网后仅显示“网络异常”，没有完整地址。此结果记为该次操作失败（用户报告）；设备、游戏版本、Android/WebView 版本和渠道尚未确认，不能泛化为所有 Android/渠道均失败。此前“有链接”的说法已被用户更正，未取得 URL 样本。
+
+按 D-015，当前优先验证 Android 官方网页登录与 B服绑定授权，URL 入口保留。并未证实网页登录可行，也未开发 APK。现有共享核心与本地存储目标保持适用。
+
 ## 版本目标
 
 Phase 0 验证 URL 获取和上游；V0.1 Android URL Import PoC；V0.2 Android 完整同步与恢复；V0.3 Android 基础分析与 UI；V0.4 Windows；V0.5 WebDAV；V0.6 其他工具导入；V0.7 PWA；V0.8 欧非、年度报告、分享。详细验收以 [ROADMAP](ROADMAP.md) 为准。

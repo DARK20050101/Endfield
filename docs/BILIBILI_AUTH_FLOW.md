@@ -2,7 +2,11 @@
 
 状态：源码线索 PARTIAL，Android 完整链 UNKNOWN；无实机 VERIFIED 节点。状态解释以 [API_RESEARCH](API_RESEARCH.md) 为准。
 
-## 第一优先级：URL 授权
+## 当前优先验证路线
+
+用户 U-001 报告断网后仅“网络异常”、无完整地址，渠道和版本待确认。当前优先调查下方官方网页登录与绑定流程能否在 Android 完成，先验证登录页面、绑定前提和安全授权返回，再接共享同步核心。不能假设网页登录已经支持 B服或已有可安装 APK。
+
+## 保留候选：URL 授权
 
 ```mermaid
 sequenceDiagram
@@ -41,7 +45,7 @@ sequenceDiagram
 
 图中架构步骤为计划而非运行证据。具体 URL 获取矩阵见 [GACHA_URL_RESEARCH](GACHA_URL_RESEARCH.md)。
 
-## 后备路线：官方网页登录与绑定
+## 优先验证：官方网页登录与绑定
 
 ```mermaid
 sequenceDiagram

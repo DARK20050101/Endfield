@@ -112,6 +112,13 @@
 - Reason：用户已更新权限并授权继续上传；原生 Git 连接仍受阻，需要使项目远程可用且不丢失任一侧历史。
 - Consequences：不强推远程、不删除原有本地历史；对齐前校验远程提交及文件树，文档发布不代表 Android/API 验收完成。
 
+## D-015：断网取链接失败后，优先验证手机网页登录
+
+- Date：2026-09-03；Status：ACCEPTED，触发 D-003 的后备验证策略。
+- Evidence：用户先更正为无法取得链接，再明确反馈“断网后显示网络异常，没有完整地址”。记录 U-001；未提供机型、游戏/系统版本及渠道确认，开发侧未独立复现。
+- Decision：不继续依赖该次失败的断网取链接路径，优先验证 Android 官方网页登录、B服绑定前提和安全授权返回；URL 入口保留为候选。
+- Consequences：不把失败推广至所有 Android/渠道，不把网页登录标为可用；手动 Token 须有独立手机获取路径才算兜底。共享 CredentialSource/Provider/SyncEngine 不变，先授权验证后业务取数；URL 专项验收不能被网页登录测试代替。
+
 ## 后续决定模板
 
 Date、ID、Status（PROPOSED/ACCEPTED/SUPERSEDED）、Decision、Reason、Alternatives、Consequences、证据、被替代/替代的决定。新增决定必须描述事实依据，不补造历史。
