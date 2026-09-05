@@ -51,3 +51,9 @@ work/
 *.local
 .DS_Store
 Thumbs.db
+
+# Generated native artifacts and machine-specific Android settings
+src-tauri/gen/schemas/
+**/local.properties
+**/key.properties
+**/build/

@@ -119,6 +119,13 @@
 - Decision：不继续依赖该次失败的断网取链接路径，优先验证 Android 官方网页登录、B服绑定前提和安全授权返回；URL 入口保留为候选。
 - Consequences：不把失败推广至所有 Android/渠道，不把网页登录标为可用；手动 Token 须有独立手机获取路径才算兜底。共享 CredentialSource/Provider/SyncEngine 不变，先授权验证后业务取数；URL 专项验收不能被网页登录测试代替。
 
+## D-016：先落地不接收凭据的网页登录观察原型
+
+- Date：2026-09-04；Status：ACCEPTED，细化 D-011/D-015。
+- Decision：选择性移植 bhaoo Nuxt 静态配置，建立最小 Tauri 外部官方页面入口，先验证页面/绑定可见性；不引入上游桌面 Token 注入/日志/query 回调。
+- Evidence：已读固定版本 lib.rs open_login_window，存在明确的秘密输出及桌面耦合；没有官方 Android 授权回调契约证据。
+- Consequences：页面打开、人工观察与应用授权严格区分；没有接入 Cookie/Token，不算 V0.1 取数验收。授权返回经验证后再接共享核心；当前代码不是完整 fork 或完整客户端。
+
 ## 后续决定模板
 
 Date、ID、Status（PROPOSED/ACCEPTED/SUPERSEDED）、Decision、Reason、Alternatives、Consequences、证据、被替代/替代的决定。新增决定必须描述事实依据，不补造历史。

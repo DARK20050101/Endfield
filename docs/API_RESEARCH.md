@@ -24,6 +24,10 @@
 
 以下 endpoint 仅是源码中观察到的中国大陆候选，不是已批准的生产 allowlist。不得把模板域名拼接能力开放给用户。
 
+## 2026-09-04 登录捕获审查补充
+
+已读 lib.rs open_login_window：XHR/fetch 匹配 user/auth 后读取 data.token；每 1500ms 轮询 account/info/hg 并读取 data.content；将秘密放入 tauri.localhost 回调 query，再广播到前端，且两侧均有 Token 日志。此为上游桌面源码事实，Android 捕获仍 UNKNOWN。详见 [WEB_LOGIN_PROBE](WEB_LOGIN_PROBE.md)，新原型不复制该捕获实现。
+
 ## 接口记录
 
 ### API-01 网页登录凭据取得

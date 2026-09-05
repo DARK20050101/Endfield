@@ -4,7 +4,7 @@
 
 ## 当前引入状态
 
-本仓库当前仅有原创整理的项目文档、概念模型及配置，**尚未复制、修改或引入任何上游业务源码或游戏资源，也未安装应用依赖**。以下参考链接不表示对应源码已成为本项目的一部分。
+2026-09-04 起新增最小授权观察原型，nuxt.config.ts 选择性衍生自主基线配置，其余原型代码独立编写；没有引入上游 Token 捕获、游戏业务代码或游戏素材。新增 Nuxt/Vue/Tauri 等依赖，版本以锁文件为准；完整分发依赖许可清单仍需发布前检查。
 
 - [bhaoo/endfield-gacha](https://github.com/bhaoo/endfield-gacha)：主基线研究，根 LICENSE 为 MIT。
 - [RoLingG/endfield-gacha-app](https://github.com/RoLingG/endfield-gacha-app)：隔离、迁移与恢复研究，根 LICENSE 为 MIT。
@@ -12,6 +12,18 @@
 - [BoxCatTeam/endfield-cat](https://github.com/BoxCatTeam/endfield-cat)：架构研究，根 LICENSE 为 GPL v2；当前不直接复制源码。
 
 固定版本与未完成审查项见 [LICENSE_REVIEW](docs/LICENSE_REVIEW.md)。游戏名称用于说明项目适用对象，不表示与官方存在合作关系；本轮未打包游戏 UI、角色图或其他资源。
+
+## 已登记：Nuxt 静态构建配置
+
+- Feature：Nuxt/Tauri 静态前端基础配置。
+- Upstream：bhaoo/endfield-gacha。
+- Original commit：72c526d49136fd23271f77e9ef33549de3721283。
+- Original file / Local target：nuxt.config.ts → nuxt.config.ts。
+- License / Copyright：MIT；Copyright (c) 2026 Bhao；完整原文见 [bhaoo MIT](licenses/bhaoo-MIT.txt)。
+- Changes：保留静态 SPA、开发主机与 Vite 环境设置；移除图表/UI 模块、关闭 devtools，增加固定端口、忽略 Rust 目录和中文页面头。
+- Reason：沿用已审查基线的静态构建约定，先隔离凭据和平台依赖，避免整仓引入桌面捕获逻辑。
+- Validation：前端和原生验证结果见 [网页登录原型](docs/WEB_LOGIN_PROBE.md)；不等于 Android 已通过。
+- Review date：2026-09-04；已阅读根 LICENSE 与配置文件，未发现配置文件独立授权声明。
 
 ## 引入登记模板
 

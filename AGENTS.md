@@ -43,4 +43,4 @@
 - 对风险逻辑运行相关测试；已有工具链时运行相应 lint / typecheck。没有脚本时说明未配置，不能捏造成功。
 - 文档阶段检查链接、术语、路线图、证据状态和敏感信息；SQL 草案用内存 SQLite 验证，不创建真实用户库。
 - 同步更新主题文档、决定和任务状态。报告修改文件、验证结果、待验证事项及风险。
-- 本仓库当前没有应用构建或测试命令；待选定上游基线后补充真实命令。
+- 最小原型命令：npm test、npm run typecheck、npm run generate；原生先在 PowerShell 执行 . ./scripts/environment.ps1，再 npm run doctor。范围与限制见 docs/WEB_LOGIN_PROBE.md。

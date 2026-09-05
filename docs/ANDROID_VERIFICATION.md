@@ -9,9 +9,9 @@
 | Node | v24.14.0，可运行 | 可执行纯 JS 合成验证 |
 | Java | Oracle JDK 25.0.1；JAVA_HOME 指向已有 JDK | 未验证其与未来 Gradle/AGP 版本兼容 |
 | adb | scrcpy 配套 adb 可运行；devices 列表为空 | 没有连接可测试的 Android 设备 |
-| Rust | PATH 中无 cargo/rustc/rustup，常见 .cargo 目录与候选目录未发现 | 当前没有确认可用的 Rust 工具链，不等于扫描了全盘 |
+| Rust | 2026-09-05 在项目外缓存安装 rustc/cargo/rustup 1.98.1，并安装 aarch64-linux-android target | Rust 就绪；原生编译仍缺 MSVC/Windows SDK，Android 仍缺 SDK/NDK |
 | Android SDK/NDK | ANDROID_HOME / ANDROID_SDK_ROOT / NDK_HOME 未设置，常见 SDK/Studio 路径未发现 | scrcpy 的 adb 不等于完整 SDK/NDK |
-| 构建结果 | 未安装应用依赖，未执行 APK 构建 | 不能报告构建成功或 Android 兼容 |
+| 构建结果 | Nuxt typecheck/generate 通过；tauri android init 因 Android SDK 缺失失败 | 已有可运行网页原型；没有 Android 工程或 APK，不能报告 Android 兼容 |
 
 [Tauri 官方前置依赖](https://v2.tauri.app/start/prerequisites/#android)要求配置 Android Studio/SDK 平台、Platform Tools、Build Tools、Command-line Tools、NDK、Java 路径及 Rust Android targets。后续准备构建环境时按实际项目工具链锁定版本，保留已有全局 Java 配置，优先使用项目级环境设置；本轮未安装这些工具或修改全局配置。
 
