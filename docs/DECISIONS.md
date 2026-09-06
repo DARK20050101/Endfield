@@ -133,6 +133,14 @@
 - Reason：用户希望免安装、通过网址直接访问；当前原型已经可以静态生成。
 - Consequences：GitHub Pages 仅托管公开静态文件。浏览器同源、CORS、SameSite 与 HttpOnly 边界仍然成立，网页不能读取其他域的登录 Cookie 或绕过官方授权流程；若后续授权必须依赖原生 WebView/系统回调，再恢复 Android 构建验证。
 
+
+## D-018：用 GitHub Actions 构建 Android 登录壳
+
+- Date：2026-09-06；Status：ACCEPTED，承接 D-017 与 U-003。
+- Decision：本机不安装 Android Studio；在 GitHub Actions 配置 Android SDK/NDK、Rust Android target 与 JDK，生成短期保存的 ARM64 debug APK。
+- Reason：纯网页没有可见寻访入口且不能跨域取得官网凭据；用户希望保持手机安装步骤简单。
+- Consequences：云端只编译无秘密的源码，APK 下载后由用户主动安装。第一版只验证壳、系统网页登录和平台边界，不捕获 Token、不调用真实寻访接口；构建成功也不代表授权链路可用。
+
 ## 后续决定模板
 
 Date、ID、Status（PROPOSED/ACCEPTED/SUPERSEDED）、Decision、Reason、Alternatives、Consequences、证据、被替代/替代的决定。新增决定必须描述事实依据，不补造历史。

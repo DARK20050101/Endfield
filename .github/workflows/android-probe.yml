@@ -1,0 +1,76 @@
+name: Build Android probe APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/android-probe.yml
+      - app/**
+      - src-tauri/**
+      - nuxt.config.ts
+      - package.json
+      - package-lock.json
+      - tsconfig.json
+
+permissions:
+  contents: read
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Android NDK
+        id: setup-ndk
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r29
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test web probe
+        run: |
+          npm test
+          npm run typecheck
+
+      - name: Initialize Android project
+        run: npm run tauri -- android init --ci
+        env:
+          NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+      - name: Build ARM64 debug APK
+        run: npm run tauri -- android build --debug --apk --target aarch64
+        env:
+          NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: endfield-trace-android-arm64-debug
+          path: src-tauri/gen/android/app/build/outputs/apk/arm64/debug/*.apk
+          if-no-files-found: error
+          retention-days: 7

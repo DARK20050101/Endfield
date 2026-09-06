@@ -49,3 +49,9 @@
 ## 构建与在线验收仍待完成
 
 工具链就绪后：固定基线→隔离桌面代码→最小 APK→安装→粘贴→权限/身份验证→角色/武器分页→SQLite→重启→重复导入→无秘密日志。官方/B服、不同游戏版本分别记录；失败结果不能泛化为所有 Android 都不支持。
+
+## 云端 APK 构建（2026-09-06）
+
+按用户要求避免安装本地 Android Studio，新增 GitHub Actions 手动/源码变更构建。工作流使用 Ubuntu、Node 22、Temurin JDK 17、NDK r29 和 Rust stable，只构建 ARM64 debug APK，产物保留 7 天。首次运行结果必须回填本节；工作流存在不等于 APK 已验证。
+
+APK 不包含签名发布密钥、账号、Cookie 或 Token。debug APK 仅供当前登录壳 PoC 测试，不作为正式发行包。官方 tauri-action 的 mobile 支持仍标为 experimental；本项目先用显式 CLI 步骤以便定位 init/build 失败。
