@@ -1,6 +1,6 @@
 # 游戏 API 证据台账
 
-审查日期：2026-09-02。**没有任何游戏接口完成本项目真实账号实测。** 源码证据不等于当前 B服 Android 可用性。URL 获取可行性另见 [GACHA_URL_RESEARCH](GACHA_URL_RESEARCH.md)。
+审查日期：2026-09-02；最近用户观察：2026-09-06。**没有任何游戏取数接口完成本项目真实账号实测。** 源码证据不等于当前 B服 Android 可用性。URL 获取可行性另见 [GACHA_URL_RESEARCH](GACHA_URL_RESEARCH.md)。
 
 ## 状态与准入
 
@@ -33,6 +33,7 @@
 ### API-01 网页登录凭据取得
 
 - Status：PARTIAL；Source project/file：bhaoo，AddAccount.vue。
+- Runtime observation（U-002，2026-09-06）：用户在手机浏览器中成功登录官方用户中心，并看到已绑定的 B服终末地角色。此为用户报告的页面与绑定可见性证据；未记录 UID、Cookie、Token、响应体或设备版本，开发侧未读取该登录会话。
 - Endpoint：登录入口 `https://user.hypergryph.com/`；源码配置了 `https://web-api.hypergryph.com/account/info/hg`。
 - Method / Request headers / Request parameters / Response structure：具体浏览器会话与捕获过程尚未完整审查，UNKNOWN；不凭 endpoint 猜 Cookie/Header。
 - Authentication：用户在官方登录页面建立会话；凭据如何安全返回客户端待验证。
