@@ -76,3 +76,9 @@ npm run android:build
 5. 只有取得安全会话内凭据后，才验证 grant→binding→U8→角色归属及角色/武器分页，再正式落库。
 
 参考：[Nuxt/Tauri](https://v2.tauri.app/start/frontend/nuxt/)、[Tauri Android 前置条件](https://v2.tauri.app/start/prerequisites/#android)、[Opener](https://v2.tauri.app/plugin/opener/)。
+
+## GitHub Pages 手机入口
+
+验证站地址：https://dark20050101.github.io/Endfield/ 。
+
+main 分支更新后，GitHub Actions 会执行 npm ci、测试、类型检查和静态生成，再发布 .output/public。构建时 baseURL 固定为 /Endfield/，本地开发仍使用 /。网页版本无需 Android SDK；它只能验证页面流程和人工观察结果，不能读取第三方域名的 Cookie、Token 或 HttpOnly 数据。

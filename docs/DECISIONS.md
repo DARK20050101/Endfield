@@ -126,6 +126,13 @@
 - Evidence：已读固定版本 lib.rs open_login_window，存在明确的秘密输出及桌面耦合；没有官方 Android 授权回调契约证据。
 - Consequences：页面打开、人工观察与应用授权严格区分；没有接入 Cookie/Token，不算 V0.1 取数验收。授权返回经验证后再接共享核心；当前代码不是完整 fork 或完整客户端。
 
+## D-017：当前验证阶段优先发布静态网页
+
+- Date：2026-09-06；Status：ACCEPTED，调整 D-002 的验证顺序，不改变完整客户端的长期目标。
+- Decision：将无凭据的网页登录观察原型通过 GitHub Pages 发布，优先用手机浏览器验证页面和绑定可见性；Android Studio、SDK/NDK 与 APK 构建延后到确有原生能力需求时。
+- Reason：用户希望免安装、通过网址直接访问；当前原型已经可以静态生成。
+- Consequences：GitHub Pages 仅托管公开静态文件。浏览器同源、CORS、SameSite 与 HttpOnly 边界仍然成立，网页不能读取其他域的登录 Cookie 或绕过官方授权流程；若后续授权必须依赖原生 WebView/系统回调，再恢复 Android 构建验证。
+
 ## 后续决定模板
 
 Date、ID、Status（PROPOSED/ACCEPTED/SUPERSEDED）、Decision、Reason、Alternatives、Consequences、证据、被替代/替代的决定。新增决定必须描述事实依据，不补造历史。
