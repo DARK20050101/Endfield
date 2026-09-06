@@ -8,7 +8,7 @@
 
 ## 运行最小原型
 
-执行 npm ci 后运行 npm run dev，打开 http://127.0.0.1:3000。原型只打开官方用户中心并记录枚举观察；不会接收授权或同步寻访。原生环境和验证步骤见 [WEB_LOGIN_PROBE](docs/WEB_LOGIN_PROBE.md)。
+执行 npm install 后运行 npm run dev，打开 http://127.0.0.1:3000。原型只打开官方用户中心并记录枚举观察；不会接收授权或同步寻访。原生环境和验证步骤见 [WEB_LOGIN_PROBE](docs/WEB_LOGIN_PROBE.md)。
 
 ## 从这里开始
 
