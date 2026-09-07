@@ -52,6 +52,6 @@
 
 ## 云端 APK 构建（2026-09-06）
 
-按用户要求避免安装本地 Android Studio，新增 GitHub Actions 手动/源码变更构建。工作流使用 Ubuntu、Node 22、Temurin JDK 17、NDK r29 和 Rust stable，只构建 ARM64 debug APK，产物保留 7 天。首次运行 34029371010 已完成 Android init 与 ARM64 debug 编译，Tauri 输出 app-universal-debug.apk；最初上传规则误指向 arm64/debug，导致该次产物未保存。后续提交将上传路径修正为 universal/debug，须以新运行的 artifact 为最终证据。
+按用户要求避免安装本地 Android Studio，新增 GitHub Actions 手动/源码变更构建。工作流使用 Ubuntu、Node 22、Temurin JDK 17、NDK r29 和 Rust stable，只构建 ARM64 debug APK，产物保留 7 天。首次运行 34029371010 已完成 Android init 与 ARM64 debug 编译，Tauri 输出 app-universal-debug.apk；最初上传规则误指向 arm64/debug，导致该次产物未保存。后续提交将上传路径修正为 universal/debug。运行 34029725482 全部步骤通过，已上传 artifact `endfield-trace-android-debug`：ZIP 34,111,723 bytes，artifact id 9988268536，digest `sha256:ea28d9b1c7307a2047bb42ab067398b8c96532a6864ce5f63e0c45cd3b1f2ca2`，GitHub 到期时间 2026-09-13T11:20:56Z。该证据确认云端可构建及保存 APK，不确认真机安装、启动或网页登录。
 
 APK 不包含签名发布密钥、账号、Cookie 或 Token。debug APK 仅供当前登录壳 PoC 测试，不作为正式发行包。官方 tauri-action 的 mobile 支持仍标为 experimental；本项目先用显式 CLI 步骤以便定位 init/build 失败。
